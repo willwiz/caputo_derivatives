@@ -1,0 +1,24 @@
+.vscode
+
+**/__pycache__
+**~$*
+**.mp4
+**.png
+**.tif
+**.pyd
+**.so
+**/__init__.pyc
+
+**/build/*
+
+venv
+uvenv
+
+test
+
+results.*
+
+script_*.py
+script_figures
+
+All reps.xlsx
