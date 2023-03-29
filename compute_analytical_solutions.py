@@ -14,7 +14,7 @@ from argparse import RawTextHelpFormatter
 parser = argparse.ArgumentParser(description="""
       To be made
       """, formatter_class=RawTextHelpFormatter)
-parser.add_argument('--cores',              '-c',   dest='nc',  type=int, default=1,
+parser.add_argument('--n-cores',              '-n',   dest='nc',  type=int, default=1,
                     help='OPTIONAL: number of cores to compute with')
 
 
