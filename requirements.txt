@@ -1,0 +1,7 @@
+Cython
+matplotlib
+numpy
+openpyxl
+opt-einsum
+pandas
+scipy

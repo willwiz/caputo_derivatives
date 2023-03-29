@@ -17,7 +17,7 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
   bar = fill * filledLength + '-' * (length - filledLength)
   print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = printEnd)
   # Print New Line on Complete
-  if iteration == total: 
+  if iteration == total:
       print()
 
 class progress_bar:
@@ -25,9 +25,9 @@ class progress_bar:
     self.n = max
     self.i = 0
     self.message = message
-    printProgressBar(self.i, self.n, prefix = self.message, suffix = 'Complete', length = 50)
+    printProgressBar(self.i, self.n, prefix = self.message, length = 50)
   def next(self):
     self.i = self.i + 1
-    printProgressBar(self.i, self.n, prefix = self.message, suffix = 'Complete', length = 50)
+    printProgressBar(self.i, self.n, prefix = self.message, length = 50)
   def finish(self):
-    printProgressBar(self.n, self.n, prefix = self.message, suffix = 'Complete', length = 50)
+    printProgressBar(self.n, self.n, prefix = self.message, length = 50)

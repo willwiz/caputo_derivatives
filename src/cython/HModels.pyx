@@ -10,27 +10,20 @@ import numpy as np
 cimport numpy as np
 cimport cython
 
-from src.cython.headers.constitutive.caputo cimport caputo_init_4
+from src.cython.headers.fractional.caputo cimport caputo_init_4
 from src.cython.headers.constitutive.neohookean cimport neohookean
 from src.cython.headers.constitutive.HOG2D cimport (
   StrucHOG2D,
   HOGDouble2D,
   HOG2D,
 )
-from src.cython.headers.hmodels.simulate cimport (
+from src.cython.headers.simulate.simulate cimport (
   get_model_parameters,
   get_model_parameters_scaled,
   he_simulate,
   he_simulate_scaled,
   caputo_simulate_C_M,
   caputo_simulate_C_M_scaled,
-)
-from src.cython.headers.hmodels.residuals cimport (
-  calculate_hyperE_residual,
-  calculate_hyperE_residual_scaled,
-  calculate_viscoE_residual_C_M,
-  calculate_weighted_viscoE_residual_C_M,
-  calculate_weighted_viscoE_residual_C_M_scaled,
 )
 
 
@@ -192,123 +185,3 @@ def CaputoSimulation_C_M_Scaled(
   caputo_simulate_C_M_scaled(&pars[0], &fiber[0], &caputo[0], Tf, &Cmax[0], &args[0][0], &dt[0], &stress[0][0], n)
   return sigma
 
-
-# ------------------------------------------------------------------------------
-# Residual Functions
-#
-# COMMENT:
-# ------------------------------------------------------------------------------
-
-def ResidualFun_HE(
-  double[:] pars,
-  double[:] fiber,
-  double[:] caputo,
-  double Tf,
-  double[:,:] strain,
-  double[:,:] stress,
-  double[:] dt,
-  double[:,:] weights,
-  int[:] index,
-  int[:] select,
-  int skip = 1
-):
-  n     = int(strain.shape[0])
-  dim   = int(strain.shape[1])
-  nprot = int(select.shape[0])
-  return calculate_hyperE_residual(&pars[0], &fiber[0], &caputo[0], Tf,
-    &strain[0][0], &stress[0][0], &dt[0], &weights[0][0], &index[0], &select[0],
-    n, dim, nprot, int(skip))
-
-
-def ResidualFun_HE_Scaled(
-  double[:] pars,
-  double[:] fiber,
-  double[:] visco,
-  double Tf,
-  double[:] Cmax,
-  double[:,:] strain,
-  double[:,:] stress,
-  double[:] dt,
-  double[:,:] weights,
-  int[:] index,
-  int[:] select,
-  int skip = 1
-):
-  n     = int(strain.shape[0])
-  dim   = int(strain.shape[1])
-  nprot = int(select.shape[0])
-  return calculate_hyperE_residual(&pars[0], &fiber[0], &visco[0], Tf,
-    &strain[0][0], &stress[0][0], &dt[0], &weights[0][0], &index[0], &select[0],
-    n, dim, nprot, int(skip))
-
-
-def ResidualFun_VE_C_M(
-  double[:] pars,
-  double[:] fiber,
-  double[:] caputo,
-  double Tf,
-  double[:,:] strain,
-  double[:,:] stress,
-  double[:] dt,
-  double[:,:] weights,
-  int[:] index,
-  int[:] select,
-  int skip = 1
-):
-  n     = int(strain.shape[0])
-  dim   = int(strain.shape[1])
-  nprot = int(select.shape[0])
-  return calculate_viscoE_residual_C_M(&pars[0], &fiber[0], &caputo[0], Tf,
-    &strain[0][0], &stress[0][0], &dt[0], &weights[0][0], &index[0], &select[0],
-    n, dim, nprot, int(skip))
-
-
-def ResidualFun_Weighted_VE_C_M(
-  double[:] pars,
-  double[:] fiber,
-  double[:] caputo,
-  double Tf,
-  double[:,:] strain,
-  double[:,:] stress,
-  double[:] dt,
-  double[:,:] weights,
-  double[:,:] deltaCG,
-  double[:,:] hysteresis,
-  double[:] alpha,
-  int[:] index,
-  int[:] select,
-  int skip = 1
-):
-  n     = int(strain.shape[0])
-  dim   = int(strain.shape[1])
-  nprot = int(select.shape[0])
-  return calculate_weighted_viscoE_residual_C_M(&pars[0], &fiber[0], &caputo[0], Tf,
-    &strain[0][0], &stress[0][0], &dt[0], &weights[0][0],
-    &deltaCG[0][0], &hysteresis[0][0], &alpha[0],
-    &index[0], &select[0], n, dim, nprot, int(skip))
-
-
-def ResidualFun_Weighted_VE_C_M_Scaled(
-  double[:] pars,
-  double[:] fiber,
-  double[:] caputo,
-  double Tf,
-  double[:] Cmax,
-  double[:,:] strain,
-  double[:,:] stress,
-  double[:] dt,
-  double[:,:] weights,
-  double[:,:] deltaCG,
-  double[:,:] hysteresis,
-  double[:] alpha,
-  int[:] index,
-  int[:] select,
-  int skip = 1
-):
-  n     = int(strain.shape[0])
-  dim   = int(strain.shape[1])
-  nprot = int(select.shape[0])
-  return calculate_weighted_viscoE_residual_C_M_scaled(&pars[0], &fiber[0], &caputo[0], Tf, &Cmax[0],
-    &strain[0][0], &stress[0][0], &dt[0], &weights[0][0],
-    &deltaCG[0][0], &hysteresis[0][0], &alpha[0],
-    &index[0], &select[0], n, dim, nprot, int(skip))
