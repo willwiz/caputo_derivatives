@@ -32,4 +32,6 @@ cdef extern from "src/cpp/fractional/caputo.hpp" namespace "caputo":
     double Q[9*4]
     double f_prev[4]
     void set_pars(double alpha, double Tf, double delta)
+    void caputo_iter(double[] fn, double dt, double[] v);
+    void diffeq_iter(double[] fn, double dt, double[] v);
 

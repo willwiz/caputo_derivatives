@@ -49,6 +49,16 @@ cdef class caputo_initialize:
   def taus(self):
     return self.carp.taus
 
+  def caputo_iter(self, double[:] fn, double dt):
+    cdef np.ndarray[dtype = np.float64_t, ndim=1] sigma = np.zeros(4, dtype=np.float64)
+    self.carp.caputo_iter(&fn[0], dt, &sigma[0])
+    return sigma
+
+  def diffeq_iter(self, double[:] fn, double dt):
+    cdef np.ndarray[dtype = np.float64_t, ndim=1] sigma = np.zeros(4, dtype=np.float64)
+    self.carp.diffeq_iter(&fn[0], dt, &sigma[0])
+    return sigma
+
 
 # ------------------------------------------------------------------------------
 # Neohookean
