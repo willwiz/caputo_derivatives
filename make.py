@@ -41,20 +41,21 @@ def run_all():
   run_clean()
   run_build_dep()
   run_build()
+  run_test()
 
 
 parser = argparse.ArgumentParser(description="""Makefile done with python""")
 parser.set_defaults(main=run_build)
 subparsers = parser.add_subparsers(help='sub-command help')
-parser_all = subparsers.add_parser('all', help='a help')
+parser_all = subparsers.add_parser('all', help='run clean build-dep build test')
 parser_all.set_defaults(main=run_all)
-parser_clean = subparsers.add_parser('clean', help='a help')
+parser_clean = subparsers.add_parser('clean', help='clean shared lib and build files')
 parser_clean.set_defaults(main=run_clean)
-parser_build_dep = subparsers.add_parser('build-dep', help='a help')
+parser_build_dep = subparsers.add_parser('build-dep', help='install python dependencies from pip')
 parser_build_dep.set_defaults(main=run_build_dep)
-parser_build = subparsers.add_parser('build', help='a help')
+parser_build = subparsers.add_parser('build', help='compile cython shared lib')
 parser_build.set_defaults(main=run_build)
-parser_test = subparsers.add_parser('test', help='a help')
+parser_test = subparsers.add_parser('test', help='run unit tests')
 parser_test.set_defaults(main=run_test)
 
 def main(args=None):

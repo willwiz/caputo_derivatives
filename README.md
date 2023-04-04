@@ -20,3 +20,9 @@ To compile the cython module, you can:
 - Call Makefile (Linux only)
 - Run python3 make.py
 - Manually run pip install on requirements.txt and build /src/setup.py
+
+## Unittests
+
+Unit tests are available as examples and to test that the shared library is working properly
+- Call `make test`
+- Call `python3 make.py test

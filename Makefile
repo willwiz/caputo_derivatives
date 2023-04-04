@@ -10,6 +10,9 @@ build:
 test:
 	python3 -m unittest discover ./unittests
 
+help:
+	python3 ./make.py --help
+
 clean:
 	rm -rf build/*
 	rm -rf src/cython/build/*
