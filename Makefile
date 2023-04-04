@@ -7,6 +7,9 @@ build-dep:
 build:
 	python3 ./src/setup.py build_ext --build-lib .
 
+test:
+	python3 -m unittest discover ./unittests
+
 clean:
 	rm -rf build/*
 	rm -rf src/cython/build/*

@@ -14,7 +14,6 @@ from src.cython.headers.fractional.caputo cimport caputo_init_4
 from src.cython.headers.constitutive.neohookean cimport neohookean
 from src.cython.headers.constitutive.HOG2D cimport (
   StrucHOG2D,
-  HOGDouble2D,
   HOG2D,
 )
 from src.cython.headers.simulate.simulate cimport (
@@ -90,18 +89,6 @@ cdef class HOGstruc2D:
     self.model = StrucHOG2D(k1, k2, theta, alpha, beta, kip, kop)
   def set_pars(self, double k1, double k2, double theta, double alpha, double beta, double kip, double kop):
     self.model.set_pars(k1, k2, theta, alpha, beta, kip, kop)
-  def stress(self, np.ndarray[np.float64_t, ndim=1] args):
-    cdef np.ndarray[dtype = np.float64_t, ndim=1] sigma = np.zeros(4, dtype=np.float64)
-    self.model.stress(&args[0], &sigma[0])
-    return sigma
-
-
-cdef class pyHOGDouble2D:
-  cdef HOGDouble2D model
-  def __init__(self, double k1, double k2, double theta, double alpha):
-    self.model = HOGDouble2D(k1, k2, theta, alpha)
-  def set_pars(self, double k1, double k2, double theta, double alpha):
-    self.model.set_pars(k1, k2, theta, alpha)
   def stress(self, np.ndarray[np.float64_t, ndim=1] args):
     cdef np.ndarray[dtype = np.float64_t, ndim=1] sigma = np.zeros(4, dtype=np.float64)
     self.model.stress(&args[0], &sigma[0])

@@ -34,6 +34,8 @@ def run_build_dep():
 def run_build():
   subprocess.check_call([sys.executable, './src/setup.py', 'build_ext', '--build-lib', '.'])
 
+def run_test():
+  subprocess.check_call([sys.executable, '-m', 'unittest', 'discover', './unittests'])
 
 def run_all():
   run_clean()
@@ -52,7 +54,8 @@ parser_build_dep = subparsers.add_parser('build-dep', help='a help')
 parser_build_dep.set_defaults(main=run_build_dep)
 parser_build = subparsers.add_parser('build', help='a help')
 parser_build.set_defaults(main=run_build)
-
+parser_test = subparsers.add_parser('test', help='a help')
+parser_test.set_defaults(main=run_test)
 
 def main(args=None):
   args=parser.parse_args(args=args)

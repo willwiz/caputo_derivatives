@@ -21,6 +21,9 @@ def force_p(a,t):
 def frac_t_anal(par, a, d, t):
   return t**(1.0-a) / gamma(2.0-a) /4
 
+def frac_tk_anal(par, a, k, t):
+  return t**(k-a) * gamma(k+1)/ gamma(k+1-a)
+
 def diff_1_anal(par, a, d, t):
   return t**a / d * ml(-t**a / d, a, a+1.0)
 

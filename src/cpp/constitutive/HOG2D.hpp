@@ -35,21 +35,6 @@ namespace constitutive_models {
     void stress(double args[4], double stress[4]);
   };
 
-  class HOGDouble2D
-  {
-  public:
-    double k1, k2;
-    double m4[4], m6[4];
-
-    HOGDouble2D () {};
-    HOGDouble2D (double k1, double k2, double theta, double alpha) {
-      this->set_pars(k1, k2, theta, alpha);
-    };
-    ~HOGDouble2D () {};
-    void set_pars(double k1, double k2, double theta, double alpha);
-    double stress(const kinematics::deformation2D &kin, double stress[4]);
-    void stress(double args[4], double stress[4]);
-  };
 
 
 

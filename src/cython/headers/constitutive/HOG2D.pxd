@@ -35,14 +35,6 @@ cdef extern from "src/cpp/constitutive/HOG2D.hpp" namespace "constitutive_models
     void set_pars(double k1, double k2, double theta, double alpha, double beta, double kip, double kop)
     void stress(double[] args, double[] stress)
 
-  cdef cppclass HOGDouble2D:
-    HOGDouble2D() except +
-    HOGDouble2D(double k1, double k2, double theta, double alpha) except +
-    double k1, k2
-    double m4[4]
-    double m6[4]
-    void set_pars(double k1, double k2, double theta, double alpha)
-    void stress(double[] args, double[] stress)
 
   cdef cppclass HOG2D:
     HOG2D() except +
