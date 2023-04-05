@@ -1,14 +1,15 @@
 .PHONY: all build-dep build clean
-all: clean build-dep build
-
-build-dep:
-	python3 -m pip install -r ./requirements.txt
 
 build:
 	python3 ./src/setup.py build_ext --build-lib .
 
+build-dep:
+	python3 -m pip install -r ./requirements.txt
+
 test:
 	python3 -m unittest discover ./unittests
+
+all: clean build-dep build test
 
 help:
 	python3 ./make.py --help

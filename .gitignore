@@ -12,6 +12,7 @@
 **/build/*
 
 venv
+wenv
 
 test
 

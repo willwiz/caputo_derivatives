@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ext = [
-        Extension(name="src.py.matlaws.internals.HModels",
+        Extension(name="src.py.matlaws._HModels",
           sources=["src/cython/HModels.pyx"],
           include_dirs=[numpy.get_include(), os.path.abspath(Path(__file__).parents[1])],
         ),

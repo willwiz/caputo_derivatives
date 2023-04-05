@@ -25,7 +25,7 @@ To compile the cython module, you can:
 
 Unit tests are available as examples and to test that the shared library is working properly
 - Call `make test`
-- Call `python3 make.py test
+- Call `python3 make.py test`
 
 ## Mittag-Loeffler function
 The mittag-loeffler function is the fork of the repository by Konrad Hinsen, see

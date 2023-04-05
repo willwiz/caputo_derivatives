@@ -1,0 +1,14 @@
+[project]
+name = "CaputoDerivatives"
+version = "0.0.1"
+authors = [
+    {name = "Will Zhang", email = "willwz@umich.edu"},
+]
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+dependencies = [
+  "Cython>=0.20.0",
+  "numpy>=1.20.1",
+  "scipy>=1.6.0",
+]
