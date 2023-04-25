@@ -1,6 +1,6 @@
 # Caputo Derivative
 
-This is a companion source code for the publication Simulating Hyperelasticity and Fractional Viscoelasticity in the Human Heart.
+This is a companion source code for the publication Simulating Hyperelasticity and Fractional Viscoelasticity in the Human Heart (DOI: 10.1016/j.cma.2023.116048, in production).
 
 ## Content
 
