@@ -1,6 +1,6 @@
 # Caputo Derivative
 
-This is a companion source code for the publication Simulating Hyperelasticity and Fractional Viscoelasticity in the Human Heart (DOI: 10.1016/j.cma.2023.116048, in production).
+This is a companion source code for the publication Simulating Hyperelasticity and Fractional Viscoelasticity in the Human Heart (DOI: 10.1016/j.cma.2023.116048).
 
 ## Content
 
@@ -31,3 +31,17 @@ Unit tests are available as examples and to test that the shared library is work
 The mittag-loeffler function is the fork of the repository by Konrad Hinsen, see
 
 https://github.com/khinsen/mittag-leffler
+
+## References
+@article{ZHANG2023simulating,
+title = {Simulating hyperelasticity and fractional viscoelasticity in the human heart},
+journal = {Computer Methods in Applied Mechanics and Engineering},
+volume = {411},
+pages = {116048},
+year = {2023},
+issn = {0045-7825},
+doi = {https://doi.org/10.1016/j.cma.2023.116048},
+url = {https://www.sciencedirect.com/science/article/pii/S004578252300172X},
+author = {Will Zhang and Javiera Jilberto and Gerhard Sommer and Michael S. Sacks and Gerhard A. Holzapfel and David A. Nordsletten},
+keywords = {Viscoelasticity, Cardiac biomechanics, Cardiac modeling, Computational modeling, fractional viscoelasticity},
+}
