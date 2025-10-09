@@ -10,15 +10,22 @@
 **/__init__.pyc
 
 **/build/*
-
+.venv
 venv
 wenv
-
+**.egg-info
+dist
+.eggs
+*.egg
+*.log
+*.sqlite3
+*.sqlite
+*.db
+*.bak
+*.backup
+*.swp
+*.swo
+.DS_Store
+.ipynb_checkpoints
 test
 
-results.*
-
-script_*.py
-script_figures
-
-All reps.xlsx
