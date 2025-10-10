@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 from numpy import matmul
 
-from py.analytical_solution import (
+from caputo_derivatives.analytical_solution import (
     diff_frac_p1_anal,
     diff_frac_p2_anal,
     diff_frac_t_anal,
@@ -20,9 +20,9 @@ from py.analytical_solution import (
     force_t,
     frac_t_anal,
 )
-from src.py.caputo import CaputoInit, caputo_derivative1_array, caputo_diffeq1_array
-from src.py.tools.InputOutput import write_array
-from src.py.tools.ProgressBar import progress_bar
+from caputo_derivatives.caputo import CaputoInit, caputo_derivative1_array, caputo_diffeq1_array
+from caputo_derivatives.tools.InputOutput import write_array
+from caputo_derivatives.tools.ProgressBar import ProgressBar
 
 parser = argparse.ArgumentParser(
     description="""
@@ -157,7 +157,7 @@ def main(arg: list[str] | None = None) -> None:
         e_list = [1, 2, 3, 4, 5]
         t_list = [32.0]
         tests = [frac_t_anal, diff_t_anal, diff_frac_t_anal, diff_frac_p1_anal, diff_frac_p2_anal]
-        bar = progress_bar(
+        bar = ProgressBar(
             "Running Prony tests",
             len(a_list) * len(n_list) * len(d_list) * len(e_list) * len(t_list) * len(tests),
         )

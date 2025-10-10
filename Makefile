@@ -1,25 +1,25 @@
 .PHONY: all build-dep build clean
 
 build:
-	python3 ./src/setup.py build_ext --build-lib .
+	python -m pip install .
 
 build-dep:
-	python3 -m pip install -r ./requirements.txt
+	python -m pip install -r ./requirements.txt
 
 test:
-	python3 -m unittest discover ./unittests
+	python -m unittest discover ./tests
 
 all: clean build-dep build test
 
 help:
-	python3 ./make.py --help
+	python ./make.py --help
 
 clean:
 	rm -rf build/*
-	rm -rf src/cython/build/*
-	rm -f src/py/*.pyd
-	rm -f src/py/*/*.pyd
-	rm -f src/py/*/*/*.pyd
-	rm -f src/py/*.so
-	rm -f src/py/*/*.so
-	rm -f src/py/*/*/*.so
+	rm -rf _cython/build/*
+	rm -f src/*/*.pyd
+	rm -f src/*/*/*.pyd
+	rm -f src/*/*/*/*.pyd
+	rm -f src/*/*.so
+	rm -f src/*/*/*.so
+	rm -f src/*/*/*/*.so

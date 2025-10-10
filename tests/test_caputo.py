@@ -4,14 +4,14 @@ import unittest
 import numpy as np
 from numpy.testing import assert_almost_equal
 
-from py.analytical_solution import (
+from caputo_derivatives.analytical_solution import (
     diff_frac_p_anal,
     frac_tk_anal,
 )
-from py.matlaws.holzapfel_models import (
+from caputo_derivatives.matlaws.holzapfel_models import (
     caputo_initialize,
 )
-from src.py.caputo import CaputoInit, caputo_derivative2_array, caputo_diffeq2_array
+from src.caputo_derivatives.caputo import CaputoInit, caputo_derivative2_array, caputo_diffeq2_array
 
 np.set_printoptions(suppress=True)
 

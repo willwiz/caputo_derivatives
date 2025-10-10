@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## Version [1.0.1] - 2025-10-10
+
+Updated to python standards.
+
+### Added
+- Proper typing for all python parts. (Cython typehinting remains frustrating)
+- Proper installation through pyproject.toml, i.e., can be install with pip
+- Update license stuff
+- Separate source codes from modules to be installed
+
+
 ## Version [0.0.1] - 2023-03-28
 
 Initial version. Semi-complete except for documented implementation.

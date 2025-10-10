@@ -7,14 +7,14 @@ from pathlib import Path
 
 import numpy as np
 
-from py.analytical_solution import (
+from caputo_derivatives.analytical_solution import (
     diff_frac_p1_anal,
     diff_frac_p2_anal,
     diff_frac_t_anal,
     diff_t_anal,
     frac_t_anal,
 )
-from src.py.tools.ProgressBar import progress_bar
+from caputo_derivatives.tools.ProgressBar import ProgressBar
 
 parser = argparse.ArgumentParser(
     description="""
@@ -82,7 +82,7 @@ def calc_sol(
             continue
         time = np.arange(0.0, 2.0 + dt, dt)
         anal_sol = np.zeros(nt)
-        bar = progress_bar(
+        bar = ProgressBar(
             f"precomputing analytical tests for a = {a}, d = {d}, dt = {dt}", len(time)
         )
         future_to_time = {executor.submit(func, par, a, d, time[k]): k for k in range(len(time))}
@@ -107,7 +107,7 @@ def submit_calc(
     nt = 2 * 10**i + 1
     time = np.arange(0.0, 2.0 + dt, dt)
     anal_sol = np.zeros(nt)
-    bar = progress_bar(f"{func.__name__:<17} with d = {d:<4}, a = {a:<3}, dt = {dt:<6}", len(time))
+    bar = ProgressBar(f"{func.__name__:<17} with d = {d:<4}, a = {a:<3}, dt = {dt:<6}", len(time))
     future_to_time = {executor.submit(func, par, a, d, time[k]): k for k in range(len(time))}
     for future in futures.as_completed(future_to_time):
         k = future_to_time[future]

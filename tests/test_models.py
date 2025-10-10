@@ -4,10 +4,10 @@ import unittest
 import numpy as np
 from numpy.testing import assert_almost_equal
 
-from py.matlaws.holzapfel_models import (
+from caputo_derivatives.matlaws.holzapfel_models import (
     NeoHookean2D,
 )
-from src.py.matlaws.neohookean import NeoHookeanPy
+from caputo_derivatives.matlaws.neohookean import NeoHookeanPy
 
 # from src.py.caputo import
 

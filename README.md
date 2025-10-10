@@ -17,6 +17,12 @@ This repository contains the following:
 
 The necessary python modules are listed in requirements.txt
 To compile the cython module, you can:
+- Use pip:
+```
+    python -m pip install .
+    pip install .
+    uv pip install .
+```
 - Call Makefile (Linux only)
 - Run python3 make.py
 - Manually run pip install on requirements.txt and build /src/setup.py
